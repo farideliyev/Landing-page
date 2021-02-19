@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap");
+/* === Mixins === */
+/* === / MIXINS === */
+/* ===  VARIABLES === */
+/* ===  /VARIABLES === */
+/* ===  /COMMON === */
+body {
+  font-family: 'Roboto', sans-serif; }
+
+.section-outer {
+  border-bottom: 1px solid #d8e3fe; }
+
+.section-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding-top: 120px;
+  padding-bottom: 120px; }
+  .section-inner--wide {
+    max-width: 1100px; }
+
+/* ===  /COMMON === */
+/* ===  /HEADER === */
+.section-header .section-inner {
+  padding-top: 20px;
+  padding-bottom: 20px; }
+
+.main-navigation {
+  display: flex;
+  align-items: center; }
+
+.logo {
+  width: 24px;
+  height: 24px;
+  background-color: #5e81fe;
+  border-radius: 100%; }
+
+.nav {
+  margin-left: 72px; }
+
+.nav-wrapper {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  list-style: none; }
+  .nav-wrapper__item + .nav-wrapper__item {
+    margin-left: 40px; }
+  .nav-wrapper__item-link {
+    font-family: 'Quicksand', sans-serif;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 12px;
+    color: #697ca6; }
+    .nav-wrapper__item-link:hover {
+      font-weight: 700;
+      color: #5e81fe;
+      transition: 0.2s; }
+    .nav-wrapper__item-link--active {
+      font-weight: 700;
+      color: #5e81fe; }
+
+.socials {
+  margin-left: auto; }
+
+.socials-wrapper {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  list-style: none;
+  align-items: center; }
+  .socials-wrapper__item + .socials-wrapper__item {
+    margin-left: 40px; }
+  .socials-wrapper__item-link path {
+    fill: #b6bac7; }
+  .socials-wrapper__item-link:hover path {
+    fill: #6188ff;
+    transition: 0.2s; }
+
+/* ===  /HEADER === */
+/* === HERO-IMAGE === */
+.section-hero-image {
+  background-color: #f4f7ff; }
+
+/* === /HERO-IMAGE === */
+/* === CUSTOMERS === */
+.section-customers .section-inner {
+  padding-top: 48px;
+  padding-bottom: 48px; }
+
+/* ===/CUSTOMERS === */
+/* === PLAN-AND-MANAGE === */
+.section-plan-and-manage {
+  background-color: #f5f8ff; }
+
+/* ===/PLAN-AND-MANAGE === */
+/* === FEATURES === */
+/* ===/FEATURES === */
+/* === STATS === */
+.section-stats {
+  background-color: #e9efff; }
+  .section-stats .section-inner {
+    padding-top: 48px;
+    padding-bottom: 48px; }
+
+/* ===/STATS === */
+/* === BLOG === */
+.section-blog {
+  background-color: #f5f8ff; }
+
+/* ===/BLOG === */
+/* === QUOTES === */
+.section-quotes {
+  background-color: #eaf0ff; }
+
+/* ===/QUOTES === */
+/* === FAQ === */
+/* ===/FAQ === */
+/* === GET STARTED === */
+.section-get-started {
+  background-color: #6888ff; }
+
+/* ===/GET STARTED === */
+/* === NEWSLETTER === */
+/* ===/NEWSLETTER === */
+/* === FOOTER === */
+.section-footer {
+  border-bottom: 0; }
+  .section-footer .section-inner {
+    padding-top: 20px;
+    padding-bottom: 20px; }
+
+/* ===/FOOTER === */
