@@ -68,9 +68,12 @@ body {
 .btn {
   @include quicksand;
 
+  box-sizing: border-box;
+  display: inline-block;
   font-weight: $fw-bold;
   font-size: $fs-sm;
   text-decoration: none;
+  white-space: nowrap;
   background: none;
   padding: $base*3 $base*4;
   border-radius: 2px;
@@ -93,6 +96,15 @@ body {
     &:hover {
       background-color: darken(#4c85ff, 5%);
     }
+
+    &-inverted {
+      color: #565f82;
+      background-color: #fff;
+
+      &:hover {
+        background-color: darken(#fff, 5%);
+      }
+    }
   }
 
   &--no-bg {
@@ -101,7 +113,17 @@ body {
 
     &:hover {
       color: darken(#adb4d2, 10%);
-      border: 1px solid darken(#d1d1e4, 10%);;
+      border: 1px solid darken(#d1d1e4, 10%);
+    }
+
+    &-inverted {
+      color: #c7d3ff;
+      border: 1px solid #a0b4ff;
+
+      &:hover {
+        color: lighten(#c7d3ff, 10%);
+        border: 1px solid lighten(#a0b4ff, 10%);
+      }
     }
   }
 
@@ -111,6 +133,15 @@ body {
 
     &:hover {
       background-color: darken(#ffd7d7, 5%);
+    }
+  }
+
+  &--greyscale {
+    background-color: #e8ecf4;
+    color: #7382a3;
+
+    &:hover {
+      background-color: darken(#e8ecf4, 5%);
     }
   }
 }
@@ -150,6 +181,7 @@ h5 {
 
   font-size: 10px;
   margin-bottom: $base * 4;
+  text-transform: uppercase;
 }
 
 .ta-c {
@@ -744,13 +776,121 @@ h5 {
 /* ===/QUOTES === */
 
 /* === FAQ === */
+.section-faq {
+  h4 {
+    font-weight: $fw-medium;
+  }
+}
+
+.faq-accordion {
+  @include list-null;
+
+  &__item {
+    $parent: &;
+
+    border-bottom: 1px solid #d8e3fe;
+
+    &--active {
+      #{$parent}-trigger {
+        transform: rotate(0);
+        color: #495274;
+        font-weight: $fw-bold;
+
+        &-icon {
+          transform: rotate(0);
+
+          .arrow {
+            stroke: #495274;
+          }
+        }
+      }
+
+      #{$parent}-content {
+        display: flex;
+      }
+    }
+
+    &-trigger {
+      display: flex;
+      padding: $base*4;
+      cursor: pointer;
+
+      &-icon {
+        width: $base*4;
+        margin-right: $base*4;
+        transform: rotate(180deg);
+
+        .arrow {
+          stroke: #8e96b7;
+        }
+      }
+
+      &-text {
+        font-size: $fs-md;
+      }
+    }
+
+    &-content {
+      display: none;
+      padding: 0 $base*4 $base*4 $base*12;
+
+      &-text {
+        flex-grow: 1;
+        line-height: 2;
+        font-size: $fs-md;
+      }
+
+      &-btn {
+        margin-left: $base*15;
+      }
+    }
+  }
+}
 
 /* ===/FAQ === */
 
 /* === GET STARTED === */
 
 .section-get-started {
-  background-color: #6888ff;
+  position: relative;
+  background: linear-gradient(#6888ff, #5e80ff);
+  text-align: center;
+  color: #fff;
+
+  &::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: url("../img/bg-clouds.svg") no-repeat 50% 50%;
+    z-index: 5;
+  }
+
+  .section-inner {
+    position: relative;
+    z-index: 10;
+  }
+
+  h5,
+  h2 {
+    color: #fff;
+  }
+
+  h2 {
+    font-weight: $fw-light;
+
+    span {
+      font-weight: $fw-medium;
+    }
+  }
+
+  .text {
+    max-width: 80%;
+    line-height: 2;
+    margin: 0 auto $base*10;
+  }
 }
 
 /* ===/GET STARTED === */
