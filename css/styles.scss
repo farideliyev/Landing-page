@@ -65,6 +65,22 @@ body {
   }
 }
 
+.input {
+  @include quicksand;
+
+  padding: $base*3 $base*4;
+  font-weight: $fw-bold;
+  font-size: $fs-sm;
+  background: #efeff7;
+  border: 1px solid transparent;
+  border-radius: $base/2;
+
+  &--size-lg {
+    padding: $base*5 $base*6;
+    border-radius: $base;
+  }
+}
+
 .btn {
   @include quicksand;
 
@@ -76,9 +92,15 @@ body {
   white-space: nowrap;
   background: none;
   padding: $base*3 $base*4;
-  border-radius: 2px;
+  border-radius: $base/2;
   border: 1px solid transparent;
   transition: $transition;
+  cursor: pointer;
+
+  &--size-lg {
+    padding: $base*5 $base*15;
+    border-radius: $base;
+  }
 
   &--primary {
     background-color: #d2e1ff;
@@ -160,7 +182,7 @@ h6 {
   color: #3d4f9f;
 }
 
-h1,
+
 h2 {
   font-size: 48px;
   margin-bottom: $base * 12;
@@ -195,8 +217,8 @@ h5 {
   justify-content: center;
 
   &__item {
-    height: 8px;
-    width: 8px;
+    height: $base *2;
+    width: $base *2;
     background-color: #d1d6e3;
     border-radius: 100%;
     transition: $transition;
@@ -242,10 +264,14 @@ h5 {
 }
 
 .logo {
-  width: $base * 6;
-  height: $base * 6;
-  background-color: #5e81fe;
-  border-radius: 100%;
+  &__link{
+    display: block;
+    width: $base * 6;
+    height: $base * 6;
+    background-color: #5e81fe;
+    border-radius: 100%;
+  }
+
 }
 
 .nav {
@@ -370,7 +396,7 @@ h5 {
   height: $base * 13;
   border-radius: 100%;
   background-color: #fff;
-  box-shadow: 0 10px 50px rgba(#c9d1e7, 0.6);
+  box-shadow: 0 $base * 2 $base * 12 rgba(#c9d1e7, 0.6);
 
   svg {
     width: $base *3;
@@ -454,20 +480,23 @@ h5 {
   text-align: center;
 
   &__item {
+    $margin-left: $base * 10;
+    $width-divider: $base * 7;
+
     flex-basis: 25%;
     position: relative;
 
     &:not(:first-child) {
-      margin-left: 40px;
+      margin-left: $margin-left;
     }
 
     &:not(:first-child)::before {
       position: absolute;
       content: "";
       height: 1px;
-      width: 28px;
-      top: 120px;
-      left: -34px;
+      width: $width-divider;
+      top: $base * 30;
+      left: -$margin-left + (($margin-left - $width-divider)/2);
       background-color: #dae4fe;
     }
 
@@ -589,7 +618,7 @@ h5 {
   @include list-null;
 
   border: 1px solid #d8e3fe;
-  box-shadow: 0 15px 50px #eff4ff;
+  box-shadow: 0 $base*4 $base*12 #eff4ff;
   background-color: #fff;
 
   &__item {
@@ -603,14 +632,14 @@ h5 {
 
     &-gallery {
       display: grid;
-      grid-template-columns: repeat(3, 120px);
-      grid-template-rows: repeat(2, 120px);
-      grid-gap: 12px;
+      grid-template-columns: repeat(3, $base*30);
+      grid-template-rows: repeat(2, $base*30);
+      grid-gap: $base*3;
 
       .image-link {
         position: relative;
-        border-radius: 5px;
-        box-shadow: 0 15px 100px 0 #e5ebf8;
+        border-radius: $base;
+        box-shadow: 0 $base*4 $base*25 0 #e5ebf8;
         overflow: hidden;
 
         .loupe {
@@ -749,7 +778,7 @@ h5 {
     padding: $base*10 $base*17 $base*15;
     background-color: #fff;
     border: 1px solid #d8e3fe;
-    box-shadow: 0 15px 50px #d4dcf1;
+    box-shadow: 0 $base*4 $base*12 #d4dcf1;
 
     &-text {
       font-size: $fw-medium;
@@ -896,6 +925,49 @@ h5 {
 /* ===/GET STARTED === */
 
 /* === NEWSLETTER === */
+
+.section-newsletter {
+  background-color: #fcfdff;
+
+  .section-inner {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__left {
+    flex-basis: 35%;
+
+    &-title {
+      @include quicksand;
+
+      margin-bottom: $base*4;
+      color: #3d4f9f;
+      font-size: $fs-lg;
+      font-weight: $fw-bold;
+    }
+
+    &-text {
+      font-size: $fs-md;
+      line-height: 2;
+    }
+  }
+
+  &__right {
+    flex-basis: 55%;
+  }
+}
+
+.form-newsletter {
+  display: flex;
+
+  &__input {
+    flex-grow: 1;
+  }
+
+  &__btn {
+    margin-left: $base * 3;
+  }
+}
 
 /* ===/NEWSLETTER === */
 
