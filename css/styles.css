@@ -9,7 +9,8 @@ body {
   color: #8d96bd; }
 
 .section-outer {
-  border-bottom: 1px solid #d8e3fe; }
+  border-bottom: 1px solid #d8e3fe;
+  padding: 0 20px; }
 
 .section-inner {
   max-width: 900px;
@@ -145,6 +146,14 @@ h5 {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0; }
 
+.visually-hidden {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden; }
+
 /* ===  /COMMON === */
 /* ===  /HEADER === */
 .section-header .section-inner {
@@ -154,6 +163,39 @@ h5 {
 .main-navigation {
   display: flex;
   align-items: center; }
+  .main-navigation__inner-wrap {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    margin-left: 72px; }
+    @media (max-width: 991px) {
+      .section-header .main-navigation__inner-wrap {
+        display: none; } }
+    @media (max-width: 991px) {
+      .section-footer .main-navigation__inner-wrap {
+        flex-direction: column; }
+        .section-footer .main-navigation__inner-wrap,
+        .section-footer .main-navigation__inner-wrap .socials,
+        .section-footer .main-navigation__inner-wrap .btn-wrapper {
+          margin-left: 0;
+          margin-top: 16px; } }
+  @media (max-width: 991px) {
+    .section-footer .main-navigation {
+      flex-direction: column; } }
+
+.btn-burger {
+  display: none;
+  margin-left: auto; }
+  .btn-burger__line {
+    display: block;
+    width: 16px;
+    height: 2px;
+    background-color: grey; }
+    .btn-burger__line + .btn-burger__line {
+      margin-top: 4px; }
+  @media (max-width: 991px) {
+    .btn-burger {
+      display: block; } }
 
 .logo__link {
   display: block;
@@ -161,9 +203,6 @@ h5 {
   height: 24px;
   background-color: #5e81fe;
   border-radius: 100%; }
-
-.nav {
-  margin-left: 72px; }
 
 .nav-wrapper {
   margin: 0;
@@ -209,6 +248,7 @@ h5 {
 /* ===  /HEADER === */
 /* === HERO-IMAGE === */
 .section-hero-image {
+  padding: 0;
   position: relative;
   background-color: #f4f7ff; }
   .section-hero-image .dots {
@@ -354,6 +394,7 @@ h5 {
 /* ===/FEATURES === */
 /* === STATS === */
 .section-stats {
+  padding: 0;
   display: flex;
   background-color: #e9efff; }
   .section-stats__icon {
@@ -399,6 +440,7 @@ h5 {
   background-color: #fff; }
   .slider-blog__item {
     display: flex;
+    justify-content: space-between;
     padding: 72px 32px; }
     .slider-blog__item-gallery, .slider-blog__item-content {
       flex-basis: 45%; }
@@ -412,9 +454,10 @@ h5 {
         border-radius: 4px;
         box-shadow: 0 16px 100px 0 #e5ebf8;
         overflow: hidden; }
-        .slider-blog__item-gallery .image-link .loupe {
+        .slider-blog__item-gallery .image-link::after {
           position: absolute;
           display: block;
+          content: "";
           transform: translate(-50%, -50%);
           top: 50%;
           left: 50%;
@@ -424,7 +467,7 @@ h5 {
           background: #fff url(../img/loupe.svg) no-repeat 50% 50%;
           opacity: 0;
           transition: 0.2s; }
-        .slider-blog__item-gallery .image-link:hover .loupe {
+        .slider-blog__item-gallery .image-link:hover::after {
           opacity: 1; }
         .slider-blog__item-gallery .image-link img {
           width: 100%;
@@ -453,12 +496,10 @@ h5 {
           grid-row: 2/3; }
           .slider-blog__item-gallery .image-link--s-2::before {
             background: linear-gradient(transparent, #35aaff); }
-    .slider-blog__item-content {
-      margin-left: 10%; }
-      .slider-blog__item-content .text {
-        line-height: 1.5;
-        font-size: 15px;
-        margin-bottom: 40px; }
+    .slider-blog__item-content .text {
+      line-height: 1.5;
+      font-size: 15px;
+      margin-bottom: 40px; }
 
 .btn-blog {
   display: block;
@@ -475,6 +516,9 @@ h5 {
     left: 100%;
     margin-left: 64px;
     transform: translateY(-50%) rotate(180deg); }
+  @media (max-width: 1199px) {
+    .btn-blog {
+      display: none; } }
 
 /* ===/BLOG === */
 /* === QUOTES === */
@@ -509,8 +553,7 @@ h5 {
       position: absolute;
       top: 100%;
       left: 50%;
-      margin-top: -30px;
-      transform: translateX(-50%);
+      transform: translate(-50%, -30px);
       width: 60px;
       height: 60px;
       border-radius: 100%;
@@ -633,5 +676,9 @@ h5 {
   color: #aeb8d0;
   margin-left: 96px;
   margin-top: 28px; }
+  @media (max-width: 991px) {
+    .copyright {
+      text-align: center;
+      margin-left: 0; } }
 
 /* === /FOOTER === */
