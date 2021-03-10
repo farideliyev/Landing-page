@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;700&family=Roboto:wght@400;500;700&display=swap');
+@import url('./normalize.css');
 
 /* === Mixins === */
 
@@ -87,31 +87,25 @@ body {
 }
 
 .vertical-indent {
-  &--s {
-    padding-top: $base*5;
-    padding-bottom: $base*5;
+  @mixin vertical-indent ($size) {
+    padding-top: $size;
+    padding-bottom: $size;
   }
 
-  &--m {
-    padding-top: $base*12;
-    padding-bottom: $base*12;
-  }
+  &--s { @include vertical-indent($base*5); }
 
-  &--l {
-    padding-top: $base*30;
-    padding-bottom: $base*30;
-  }
+  &--m { @include vertical-indent($base*12); }
+
+  &--l { @include vertical-indent($base*30); }
 
   @media (max-width: $breakpoint-md-max) {
-    &--m {
-      padding-top: $base*10;
-      padding-bottom: $base*10;
-    }
+    &--m { @include vertical-indent($base*10); }
+    &--l { @include vertical-indent($base*15); }
+  }
 
-    &--l {
-      padding-top: $base*15;
-      padding-bottom: $base*15;
-    }
+  @media (max-width: $breakpoint-xs-max) {
+    &--m { @include vertical-indent($base*5); }
+    &--l { @include vertical-indent($base*10); }
   }
 }
 
@@ -130,8 +124,13 @@ body {
   border-radius: $base/2;
 
   &--size-lg {
-    padding: $base*5 $base*6;
+    padding: $base*5 $base*15;
     border-radius: $base;
+
+    @media (max-width: $breakpoint-md-max) {
+      padding-left: $base*5;
+      padding-right: $base*5;
+    }
   }
 }
 
@@ -329,7 +328,7 @@ h5 {
 
     .section-header & {
       @media (max-width: $breakpoint-md-max) {
-        display: none;
+        //display: none;
         position: absolute;
         top: 100%;
         z-index: 10;
@@ -406,6 +405,10 @@ h5 {
   &__item {
     & + & {
       margin-left: $base * 10;
+
+      @media (max-width: $breakpoint-xs-max) {
+        margin-left: 0;
+      }
     }
 
     &-link {
@@ -427,6 +430,11 @@ h5 {
         color: $color-secondary;
       }
     }
+  }
+
+  @media (max-width: $breakpoint-xs-max) {
+    flex-direction: column;
+    align-items: center;
   }
 }
 
@@ -543,7 +551,7 @@ h5 {
       }
     }
 
-    @media (max-width: $breakpoint-xs-max) {
+    @media (max-width: $breakpoint-sm-max) {
       flex-wrap: wrap;
       justify-content: center;
 
@@ -819,6 +827,7 @@ h5 {
       grid-template-columns: repeat(3, $base*30);
       grid-template-rows: repeat(2, $base*30);
       grid-gap: $base*4;
+      width: 100%;
 
       .image-link {
         position: relative;
@@ -848,7 +857,7 @@ h5 {
         img {
           width: 100%;
           height: 100%;
-          object-fit: contain;
+          object-fit: cover;
         }
 
         &::before {
@@ -890,9 +899,26 @@ h5 {
       }
 
       @media (max-width: $breakpoint-md-max) {
-        grid-template-columns: repeat(3, $base*25);
-        grid-template-rows: repeat(2, $base*25);
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(1, 1fr);
         grid-gap: $base*2;
+
+        .image-link {
+          &--b {
+            grid-column: 1/2;
+            grid-row: 1/2;
+          }
+
+          &--s-1 {
+            grid-column: 2/3;
+            grid-row: 1/2;
+          }
+
+          &--s-2 {
+            grid-column: 3/4;
+            grid-row: 1/2;
+          }
+        }
       }
     }
 
@@ -907,9 +933,13 @@ h5 {
       }
     }
 
-    @media (max-width: $breakpoint-xs-max) {
+    @media (max-width: $breakpoint-md-max) {
       flex-direction: column;
       padding: $base*6;
+
+      &-gallery {
+        width: 50%;
+      }
 
       &-content {
         position: relative;
@@ -922,6 +952,16 @@ h5 {
         }
       }
     }
+
+    @media (max-width: $breakpoint-xs-max) {
+      &-gallery {
+        width: 100%;
+      }
+    }
+
+    //@media (max-width: $breakpoint-sm-max) {
+    //
+    //}
   }
 }
 
@@ -965,7 +1005,7 @@ h5 {
       font-weight: $fw-medium;
     }
 
-    @media (max-width: $breakpoint-xs-max) {
+    @media (max-width: $breakpoint-sm-max) {
       flex-direction: column;
     }
   }
@@ -1090,6 +1130,21 @@ h5 {
         margin-left: $base*15;
       }
     }
+
+    @media (max-width: $breakpoint-md-max) {
+      &-content {
+        flex-direction: column;
+
+        &-text {
+          margin-bottom: $base*2;
+        }
+
+        &-btn {
+          margin-left: 0;
+        }
+      }
+    }
+
   }
 }
 
@@ -1133,9 +1188,12 @@ h5 {
   }
 
   .text {
-    max-width: 80%;
     line-height: 2;
     margin: 0 auto $base*10;
+
+    @media (min-width: $breakpoint-sm-min) {
+      max-width: 80%;
+    }
   }
 }
 
