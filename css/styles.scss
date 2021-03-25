@@ -70,6 +70,7 @@ body {
   @include roboto;
 
   color: #8d96bd;
+  padding-top: $base*20;
 }
 
 .section-outer {
@@ -311,11 +312,6 @@ h5 {
 /* ===  /COMMON === */
 
 /* ===  /HEADER === */
-
-.section-header {
-  position: relative;
-}
-
 .main-navigation {
   display: flex;
   align-items: center;
@@ -328,7 +324,7 @@ h5 {
 
     .section-header & {
       @media (max-width: $breakpoint-md-max) {
-        //display: none;
+        display: none;
         position: absolute;
         top: 100%;
         z-index: 10;
@@ -363,6 +359,36 @@ h5 {
       .logo {
         margin-bottom: $base * 4;
       }
+    }
+  }
+}
+
+.section-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 15;
+  background-color: #fff;
+
+  &::before {
+    content: "";
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  &_active_nav {
+    &::before {
+      display: block;
+    }
+
+    .main-navigation__inner-wrap {
+      display: flex;
     }
   }
 }
