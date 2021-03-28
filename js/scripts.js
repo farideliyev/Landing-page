@@ -1,3 +1,6 @@
+const header = document.querySelector(".section-header")
+const mainNavigation = document.getElementById("main-navigation")
+
 document.querySelector(".faq-accordion").addEventListener("click", (event) => {
     let closest = event.target.closest(".faq-accordion__item")
     if (closest) {
@@ -6,19 +9,34 @@ document.querySelector(".faq-accordion").addEventListener("click", (event) => {
 })
 
 document.querySelector(".btn-burger").addEventListener("click", () => {
-    document.querySelector(".section-header").classList.toggle("section-header_active_nav")
+    header.classList.toggle("section-header_active_nav")
 
-   
+    if (header.classList.contains("section-header_active_nav")) {
+       hideScroll()
+    } else {
+        showScroll()
+    }
 
 })
 
+const resetNav = () => {
+  header.classList.remove("section-header_active_nav")
+    showScroll()
+}
+window.addEventListener("resize", resetNav)
+
 const hideScroll = ()=>{
-    document.body.style.paddingRight = `${getScrollbarWidth()}px`
+    const scrollWidth = `${getScrollbarWidth()}px`
+    document.body.style.paddingRight = scrollWidth
     document.body.style.overflow = "hidden"
+
+    mainNavigation.style.paddingRight = scrollWidth
 }
 const showScroll = () => {
     document.body.style.paddingRight = ""
     document.body.style.overflow = "visible"
+
+    mainNavigation.style.paddingRight = ""
 }
 
 //GET SCROLLBAR WIDTH
@@ -39,3 +57,44 @@ const getScrollbarWidth = () => {
 
     return scrollBarWidth
 }
+
+
+// Swiper
+new Swiper('.section-hero-image', {
+    pagination: {
+        el: '.swiper-pagination',
+        type: 'bullets',
+        clickable: true
+    }
+});
+
+new Swiper('.slider-blog-container', {
+    loop:true,
+    pagination: {
+        el: ' .section-blog .dots',
+        type: 'bullets',
+        clickable: true
+    },
+
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+});
+
+new Swiper('.slider-quotes-container', {
+    loop:true,
+    slidesPerView: "auto",
+    pagination: {
+        el: ' .section-quotes__right .dots',
+        type: 'bullets',
+        clickable: true
+    },
+
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+});
+
+
